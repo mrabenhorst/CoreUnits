@@ -13,10 +13,11 @@
 
 @synthesize linearUnit = _linearUnit;
 @synthesize arealUnit = _arealUnit;
+@synthesize unitTrackerDefault = _unitTrackerDefault;
 
 - (id)init {
 	if( self = [super init] ) {
-
+        _unitTrackerDefault = CUUnitTrackerDefaultNone;
 	}
 	return self;
 }
@@ -29,7 +30,7 @@
 }
 
 - (CUValue*)valueFromValue:(CUValue*) fromValue {
-	if( !_unitTrackerDefault ) {
+	if( _unitTrackerDefault == CUUnitTrackerDefaultNone ) {
 		switch( [[fromValue unit] unitMechanic] ) {
 			case CUUnitMechanicLinear:
 				return [(CULinearValue*)fromValue valueByConvertingToUnit:_linearUnit];

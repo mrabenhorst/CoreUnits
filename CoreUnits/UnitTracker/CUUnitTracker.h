@@ -11,6 +11,7 @@
 @class CUValue;
 
 typedef enum {
+    CUUnitTrackerDefaultNone,
 	CUUnitTrackerDefaultCommonScaleAdaptiveSI, // Meters/Kilometers
 	CUUnitTrackerDefaultCommonScaleAdaptiveImperial // Feet/Miles
 } CUUnitTrackerDefault;
@@ -31,5 +32,6 @@ typedef enum {
 
 @property (nonatomic, retain) CULinearUnit *linearUnit;
 @property (nonatomic, retain) CUArealUnit *arealUnit;
+@property (nonatomic, assign) CUUnitTrackerDefault unitTrackerDefault;
 
 @end
