@@ -4,8 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CUUnitTypes.h"
 
 @interface CUUnit : NSObject {
+	CUUnitMechanic _unitMechanic;
 	double _baseUnitMultiplier;
 
 	NSString *_unitNameSingular;
@@ -14,6 +16,7 @@
 }
 
 @property (nonatomic, readonly) double baseUnitMultiplier;
+@property (nonatomic, readonly) CUUnitMechanic unitMechanic;
 
 @property (nonatomic, readonly) NSString *unitNameSingular;
 @property (nonatomic, readonly) NSString *unitNamePlural;

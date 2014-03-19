@@ -9,8 +9,9 @@
 @implementation CUUnit
 
 @synthesize baseUnitMultiplier = _baseUnitMultiplier;
-
+@synthesize unitMechanic = _unitMechanic;
 @synthesize unitNameSingular = _unitNameSingular;
 @synthesize unitNamePlural = _unitNamePlural;
 @synthesize unitAbbreviation = _unitAbbreviation;
+
 @end

@@ -7,6 +7,7 @@
 #import "CULinearUnit.h"
 #import "CUArealUnit.h"
 #import "CULinearValue.h"
+#import "CUValue.h"
 
 @implementation CUUnitTracker
 
@@ -27,12 +28,37 @@
 	return self;
 }
 
-- (CULinearValue*)valueFromValue:(CULinearValue*) fromValue {
+- (CUValue*)valueFromValue:(CUValue*) fromValue {
 	if( !_unitTrackerDefault ) {
-		return [fromValue valueByConvertingToUnit:_linearUnit];
+		switch( [[fromValue unit] unitMechanic] ) {
+			case CUUnitMechanicLinear:
+				return [(CULinearValue*)fromValue valueByConvertingToUnit:_linearUnit];
+
+			case CUUnitMechanicAreal:
+				break;
+
+			case CUUnitMechanicVolumetric:
+				break;
+
+			default:
+				break;
+		}
 	} else {
-		return [CUUnitTracker linearValueFromValue:fromValue usingUnitTrackerDefault:_unitTrackerDefault];
+		switch( [[fromValue unit] unitMechanic] ) {
+			case CUUnitMechanicLinear:
+				return [CUUnitTracker linearValueFromValue:(CULinearValue*)fromValue usingUnitTrackerDefault:_unitTrackerDefault];
+
+			case CUUnitMechanicAreal:
+				break;
+
+			case CUUnitMechanicVolumetric:
+				break;
+
+			default:
+				break;
+		}
 	}
+	return nil;
 }
 
 + (CULinearValue*)linearValueFromValue:(CULinearValue*) linearValue usingUnitTrackerDefault:(CUUnitTrackerDefault) unitTrackerDefault {
@@ -40,7 +66,7 @@
 		case CUUnitTrackerDefaultCommonScaleAdaptiveSI: {
 			// Take linear value down to meters
 			CULinearValue *linearValueInMeters;
-			if( [[linearValue unit] unitType] != CULinearUnitTypeMeter ) {
+			if( [(CULinearUnit*)[linearValue unit] unitType] != CULinearUnitTypeMeter ) {
 				linearValueInMeters = [linearValue valueByConvertingToUnit:[CULinearUnit meters]];
 			} else {
 				linearValueInMeters = linearValue;
@@ -57,7 +83,7 @@
 		case CUUnitTrackerDefaultCommonScaleAdaptiveImperial: {
 			// Take linear value down to feet
 			CULinearValue *linearValueInFeet;
-			if( [[linearValue unit] unitType] != CULinearUnitTypeFoot ) {
+			if( [(CULinearUnit*)[linearValue unit] unitType] != CULinearUnitTypeFoot ) {
 				linearValueInFeet = [linearValue valueByConvertingToUnit:[CULinearUnit feet]];
 			} else {
 				linearValueInFeet = linearValue;

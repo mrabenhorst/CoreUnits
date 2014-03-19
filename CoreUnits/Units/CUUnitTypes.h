@@ -9,10 +9,10 @@
 
 // Dimensional Measurements
 typedef enum {
-    CUUnitTypeLinear,
-    CUUnitTypeArea,
-    CUUnitTypeVolume
-} CUUnitType;
+	CUUnitMechanicLinear,
+    CUUnitMechanicAreal,
+    CUUnitMechanicVolumetric
+} CUUnitMechanic;
 
 ////////////////////
 //

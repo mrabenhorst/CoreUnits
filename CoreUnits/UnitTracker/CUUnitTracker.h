@@ -8,6 +8,7 @@
 @class CULinearUnit;
 @class CUArealUnit;
 @class CULinearValue;
+@class CUValue;
 
 typedef enum {
 	CUUnitTrackerDefaultCommonScaleAdaptiveSI, // Meters/Kilometers
@@ -23,7 +24,8 @@ typedef enum {
 
 - (id)init;
 - (id)initWithUnitTrackerDefault:(CUUnitTrackerDefault) unitTrackerDefault;
-- (CULinearValue*)valueFromValue:(CULinearValue*) fromValue;
+
+- (CUValue*)valueFromValue:(CUValue*) fromValue;
 
 + (CULinearValue*)linearValueFromValue:(CULinearValue*) linearValue usingUnitTrackerDefault:(CUUnitTrackerDefault) unitTrackerDefault;
 

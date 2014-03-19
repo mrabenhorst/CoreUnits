@@ -16,6 +16,7 @@
 			 baseMultiplier:(double) baseMultiplier {
 
 	if( self = [super init] ) {
+		_unitMechanic       = CUUnitMechanicLinear;
 		_unitType           = unitType;
 		_baseUnitType       = baseUnitType;
 		_baseUnitMultiplier = baseMultiplier;
