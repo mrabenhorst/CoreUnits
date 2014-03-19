@@ -31,8 +31,12 @@
 
 - (void)testExample {
     
-    CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit kilometers] andValue:1];
-    CULinearValue *imperialValue = [CUUnitTracker linearValueFromValue:linearValue usingUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveImperial];
+    CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit miles] andValue:1];
+    
+    CUUnitTracker *unitTracker = [[CUUnitTracker alloc] initWithUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveSI];
+    NSLog(@"%@",[unitTracker valueFromValue:linearValue]);
+    [unitTracker setUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveImperial];
+    NSLog(@"%@",[unitTracker valueFromValue:linearValue]);
 }
 
 @end

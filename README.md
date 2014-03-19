@@ -1,7 +1,7 @@
 CoreUnits
 =========
 
-A library for Objective-C to keep track of and easily convert between units of measurement. In the near future, CoreUnits will allow a user to dynamically create any unit to convert to-from by providing an established base unit conversion. 
+A unit conversion library for Objective-C to keep track of and easily convert between units of measurement. In the near future, CoreUnits will allow a user to dynamically create any unit to convert to-from by providing an established base unit conversion. 
 
 CoreUnits is based off of the SI system and all base units are the currently recognized base units of the SI system. Imperial base units are those with agreed upon exact conversions to an SI base unit. All Imperial units are converted down to the base Imperial unit and then converted to SI to retain precision.
 
