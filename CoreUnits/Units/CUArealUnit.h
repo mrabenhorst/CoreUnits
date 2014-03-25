@@ -25,4 +25,12 @@
 
 + (id)arealUnitWithType:(CUArealUnitType) arealUnitType;
 
++ (id)squareMeters;
++ (id)squareKilometers;
++ (id)hectares;
++ (id)squareFeet;
++ (id)squareYards;
++ (id)squareMiles;
++ (id)acres;
+
 @end

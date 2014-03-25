@@ -19,6 +19,7 @@
 			  baseMultiplier:(double) baseMultiplier {
 
 	if( self = [super init] ) {
+		_unitMechanic       = CUUnitMechanicLinear;
 		_unitType           = unitType;
 		_baseUnitType       = baseUnitType;
 		_baseUnitMultiplier = baseMultiplier;
@@ -51,7 +52,7 @@
 	return [[[CULinearUnit alloc] initLinearUnitWithType:CULinearUnitTypeFoot
 	                                        nameSingular:@"Foot"
 				                              namePlural:@"Feet"
-		                                    abbreviation:@"Km"
+		                                    abbreviation:@"ft"
 					                        baseUnitType:CULinearUnitTypeYard
 								          baseMultiplier:(1.0/3.0)] autorelease];
 }

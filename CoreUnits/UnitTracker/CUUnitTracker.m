@@ -8,6 +8,7 @@
 #import "CUArealUnit.h"
 #import "CULinearValue.h"
 #import "CUValue.h"
+#import "CUArealValue.h"
 
 @implementation CUUnitTracker
 
@@ -36,7 +37,7 @@
 				return [(CULinearValue*)fromValue valueByConvertingToUnit:_linearUnit];
 
 			case CUUnitMechanicAreal:
-				break;
+				return [(CUArealValue*)fromValue valueByConvertingToUnit:_arealUnit];
 
 			case CUUnitMechanicVolumetric:
 				break;
@@ -50,7 +51,7 @@
 				return [CUUnitTracker linearValueFromValue:(CULinearValue*)fromValue usingUnitTrackerDefault:_unitTrackerDefault];
 
 			case CUUnitMechanicAreal:
-				break;
+				return [CUUnitTracker arealValueFromValue:(CUArealValue*) fromValue usingUnitTrackerDefault:_unitTrackerDefault];
 
 			case CUUnitMechanicVolumetric:
 				break;
@@ -101,6 +102,49 @@
 		default:
 			break;
 	}
+	return nil;
+}
+
++ (CUArealValue*)arealValueFromValue:(CUArealValue*) arealValue usingUnitTrackerDefault:(CUUnitTrackerDefault) unitTrackerDefault {
+	switch( unitTrackerDefault ) {
+		case CUUnitTrackerDefaultCommonScaleAdaptiveSI: {
+			// Take linear value down to meters
+			CUArealValue *arealValueInSquareMeters;
+			if( [(CUArealUnit*)[arealValue unit] unitType] != CUArealUnitTypeSquareMeter ) {
+				arealValueInSquareMeters = [arealValue valueByConvertingToUnit:[CUArealUnit squareMeters]];
+			} else {
+				arealValueInSquareMeters = arealValue;
+			}
+
+			// If meters value >=1000 then convert to kilometers, else keep as meters
+			if( [arealValueInSquareMeters value] >= 1000000 ) {
+				return [arealValueInSquareMeters valueByConvertingToUnit:[CUArealUnit squareKilometers]];
+			} else {
+				return arealValueInSquareMeters;
+			}
+		}
+
+		case CUUnitTrackerDefaultCommonScaleAdaptiveImperial: {
+			// Take linear value down to feet
+			CUArealValue *linearValueInSquareFeet;
+			if( [(CUArealUnit*)[arealValue unit] unitType] != CUArealUnitTypeSquareFoot ) {
+				linearValueInSquareFeet = [arealValue valueByConvertingToUnit:[CUArealUnit squareFeet]];
+			} else {
+				linearValueInSquareFeet = arealValue;
+			}
+
+			// If feet value >=5280 then convert to miles, else keep as feet
+			if( [linearValueInSquareFeet value] >= 27878400 ) {
+				return [linearValueInSquareFeet valueByConvertingToUnit:[CUArealUnit squareMiles]];
+			} else {
+				return linearValueInSquareFeet;
+			}
+		}
+
+		default:
+			break;
+	}
+
 	return nil;
 }
 

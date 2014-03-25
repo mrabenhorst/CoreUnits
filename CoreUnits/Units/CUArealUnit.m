@@ -16,7 +16,7 @@
 			 baseMultiplier:(double) baseMultiplier {
 
 	if( self = [super init] ) {
-		_unitMechanic       = CUUnitMechanicLinear;
+		_unitMechanic       = CUUnitMechanicAreal;
 		_unitType           = unitType;
 		_baseUnitType       = baseUnitType;
 		_baseUnitMultiplier = baseMultiplier;
@@ -78,7 +78,7 @@
 				                            namePlural:@"Square Miles"
 						                  abbreviation:@"sq mi"
 									      baseUnitType:CUArealUnitTypeSquareFoot
-										baseMultiplier:(1.0/27878400.0)] autorelease];
+										baseMultiplier:27878400.0] autorelease];
 }
 
 + (id)acres {
