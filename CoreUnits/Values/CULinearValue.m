@@ -34,7 +34,7 @@
 	// First, convert forward from current unit to meters or newLinearUnit if that comes before the base meters unit
 	CULinearUnit * currentForwardUnit = (CULinearUnit*)_unit;
 	double currentForwardValue = _value;
-	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && [currentForwardUnit unitType] != [newLinearUnit unitType] ) {
+	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && ( [currentForwardUnit unitType] != [newLinearUnit unitType] || [newLinearUnit unitType] == CULinearUnitTypeCustom ) ) {
 		currentForwardValue = [currentForwardUnit unitConversionBlock](currentForwardValue);
 		currentForwardUnit = [CULinearUnit linearUnitWithType:[currentForwardUnit baseUnitType]];
 	}

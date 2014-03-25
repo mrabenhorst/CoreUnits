@@ -20,6 +20,9 @@ typedef enum {
 //
 ////////////////////
 typedef enum {
+    // Custom
+    CULinearUnitTypeCustom,
+    
     // SI Units
     CULinearUnitTypeMeter, // Official base unit for linear units
     CULinearUnitTypeKilometer,
@@ -38,6 +41,9 @@ typedef enum {
 //
 ////////////////////
 typedef enum {
+    // Custom
+    CUArealUnitTypeCustom,
+    
 	// SI Units
 	CUArealUnitTypeSquareMeter, // Official base unit for areal units
 	CUArealUnitTypeSquareKilometer,

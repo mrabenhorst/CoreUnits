@@ -20,5 +20,6 @@
 - (id)initWithLinearUnit:(CULinearUnit*) linearUnit andValue:(double) value;
 
 - (CULinearValue*)valueByConvertingToUnitType:(CULinearUnitType) newLinearUnitType;
+- (CULinearValue*)valueByConvertingToUnit:(CULinearUnit*) newLinearUnit;
 
 @end

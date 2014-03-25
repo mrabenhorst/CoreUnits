@@ -18,5 +18,6 @@
 - (id)initWithArealUnit:(CUArealUnit*) arealUnit andValue:(double) value;
 
 - (CUArealValue*)valueByConvertingToUnitType:(CUArealUnitType) newArealUnitType;
+- (CUArealValue*)valueByConvertingToUnit:(CUArealUnit*) newArealUnit;
 
 @end

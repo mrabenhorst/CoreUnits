@@ -33,6 +33,17 @@
     
     CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnitType:CULinearUnitTypeKilometer andValue:1];
     CULinearValue *linearValueInYards = [linearValue valueByConvertingToUnitType:CULinearUnitTypeYard];
+    
+    CULinearUnit *floorUnit = [[CULinearUnit alloc] initLinearUnitWithType:CULinearUnitTypeCustom nameSingular:@"Floor" namePlural:@"Floors" abbreviation:@"flrs" baseUnitType:CULinearUnitTypeFoot unitConversionBlock:^(double value){return value*8;}];
+    CULinearValue *searsTower = [[CULinearValue alloc] initWithLinearUnit:floorUnit andValue:108];
+    NSLog(@"Sears tower is %@ high", searsTower);
+    NSLog(@"Sears tower is %@ high", [searsTower valueByConvertingToUnitType:CULinearUnitTypeFoot]);
+    NSLog(@"Sears tower is %@ high", [searsTower valueByConvertingToUnitType:CULinearUnitTypeMeter]);
+    
+    CULinearUnit *pencilUnit = [[CULinearUnit alloc] initLinearUnitWithType:CULinearUnitTypeCustom nameSingular:@"Pencil" namePlural:@"Pencils" abbreviation:@"pncl" baseUnitType:CULinearUnitTypeFoot unitConversionBlock:^(double value){return value*0.583333;}];
+    
+    NSLog(@"Sears tower is %@ high", [searsTower valueByConvertingToUnit:pencilUnit]);
+    
     NSLog(@"%@",linearValueInYards);
     NSLog(@"%.2f %@",[linearValueInYards value], [[linearValueInYards unit] unitAbbreviation] );
     

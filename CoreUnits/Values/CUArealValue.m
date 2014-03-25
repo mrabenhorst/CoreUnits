@@ -32,7 +32,7 @@
 	// First, convert forward from current unit to meters or newArealUnit if that comes before the base meters unit
 	CUArealUnit *currentForwardUnit = (CUArealUnit*)_unit;
 	double currentForwardValue = _value;
-	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && [currentForwardUnit unitType] != [newArealUnit unitType] ) {
+	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && ( [currentForwardUnit unitType] != [newArealUnit unitType] || [newArealUnit unitType] == CUArealUnitTypeCustom ) ) {
 		currentForwardValue = [currentForwardUnit unitConversionBlock](currentForwardValue);
 		currentForwardUnit = [CUArealUnit arealUnitWithType:[currentForwardUnit baseUnitType]];
 	}
