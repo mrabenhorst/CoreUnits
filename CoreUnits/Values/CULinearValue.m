@@ -11,6 +11,10 @@
 
 @implementation CULinearValue
 
+- (id)initWithLinearUnitType:(CULinearUnitType) linearUnitType andValue:(double) value {
+    return [self initWithLinearUnit:[CULinearUnit linearUnitWithType:linearUnitType] andValue:value];
+}
+
 - (id)initWithLinearUnit:(CULinearUnit*) linearUnit andValue:(double) value {
 	if( self = [super init] ) {
 		_unit = [linearUnit retain];

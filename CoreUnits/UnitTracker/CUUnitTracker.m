@@ -34,10 +34,10 @@
 	if( _unitTrackerDefault == CUUnitTrackerDefaultNone ) {
 		switch( [[fromValue unit] unitMechanic] ) {
 			case CUUnitMechanicLinear:
-				return [(CULinearValue*)fromValue valueByConvertingToUnit:_linearUnit];
+				return [(CULinearValue*)fromValue valueByConvertingToUnitType:[_linearUnit unitType]];
 
 			case CUUnitMechanicAreal:
-				return [(CUArealValue*)fromValue valueByConvertingToUnit:_arealUnit];
+				return [(CUArealValue*)fromValue valueByConvertingToUnitType:[_arealUnit unitType]];
 
 			case CUUnitMechanicVolumetric:
 				break;
@@ -69,14 +69,14 @@
 			// Take linear value down to meters
 			CULinearValue *linearValueInMeters;
 			if( [(CULinearUnit*)[linearValue unit] unitType] != CULinearUnitTypeMeter ) {
-				linearValueInMeters = [linearValue valueByConvertingToUnit:[CULinearUnit meters]];
+				linearValueInMeters = [linearValue valueByConvertingToUnitType:CULinearUnitTypeMeter];
 			} else {
 				linearValueInMeters = linearValue;
 			}
 
 			// If meters value >=1000 then convert to kilometers, else keep as meters
 			if( [linearValueInMeters value] >= 1000 ) {
-				return [linearValueInMeters valueByConvertingToUnit:[CULinearUnit kilometers]];
+				return [linearValueInMeters valueByConvertingToUnitType:CULinearUnitTypeKilometer];
 			} else {
 				return linearValueInMeters;
 			}
@@ -86,14 +86,14 @@
 			// Take linear value down to feet
 			CULinearValue *linearValueInFeet;
 			if( [(CULinearUnit*)[linearValue unit] unitType] != CULinearUnitTypeFoot ) {
-				linearValueInFeet = [linearValue valueByConvertingToUnit:[CULinearUnit feet]];
+				linearValueInFeet = [linearValue valueByConvertingToUnitType:CULinearUnitTypeFoot];
 			} else {
 				linearValueInFeet = linearValue;
 			}
 
 			// If feet value >=5280 then convert to miles, else keep as feet
 			if( [linearValueInFeet value] >= 5280 ) {
-				return [linearValueInFeet valueByConvertingToUnit:[CULinearUnit miles]];
+				return [linearValueInFeet valueByConvertingToUnitType:CULinearUnitTypeMile];
 			} else {
 				return linearValueInFeet;
 			}
@@ -111,14 +111,14 @@
 			// Take linear value down to meters
 			CUArealValue *arealValueInSquareMeters;
 			if( [(CUArealUnit*)[arealValue unit] unitType] != CUArealUnitTypeSquareMeter ) {
-				arealValueInSquareMeters = [arealValue valueByConvertingToUnit:[CUArealUnit squareMeters]];
+				arealValueInSquareMeters = [arealValue valueByConvertingToUnitType:CUArealUnitTypeSquareMeter];
 			} else {
 				arealValueInSquareMeters = arealValue;
 			}
 
 			// If meters value >=1000 then convert to kilometers, else keep as meters
 			if( [arealValueInSquareMeters value] >= 1000000 ) {
-				return [arealValueInSquareMeters valueByConvertingToUnit:[CUArealUnit squareKilometers]];
+				return [arealValueInSquareMeters valueByConvertingToUnitType:CUArealUnitTypeSquareKilometer];
 			} else {
 				return arealValueInSquareMeters;
 			}
@@ -128,14 +128,14 @@
 			// Take linear value down to feet
 			CUArealValue *linearValueInSquareFeet;
 			if( [(CUArealUnit*)[arealValue unit] unitType] != CUArealUnitTypeSquareFoot ) {
-				linearValueInSquareFeet = [arealValue valueByConvertingToUnit:[CUArealUnit squareFeet]];
+				linearValueInSquareFeet = [arealValue valueByConvertingToUnitType:CUArealUnitTypeSquareFoot];
 			} else {
 				linearValueInSquareFeet = arealValue;
 			}
 
 			// If feet value >=5280 then convert to miles, else keep as feet
 			if( [linearValueInSquareFeet value] >= 27878400 ) {
-				return [linearValueInSquareFeet valueByConvertingToUnit:[CUArealUnit squareMiles]];
+				return [linearValueInSquareFeet valueByConvertingToUnitType:CUArealUnitTypeSquareMile];
 			} else {
 				return linearValueInSquareFeet;
 			}

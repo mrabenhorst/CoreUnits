@@ -31,9 +31,10 @@
 
 - (void)testExample {
     
-    CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit miles] andValue:1];
-    
+    CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnitType:CULinearUnitTypeKilometer andValue:1];
     CULinearValue *linearValueInYards = [linearValue valueByConvertingToUnitType:CULinearUnitTypeYard];
+    NSLog(@"%@",linearValueInYards);
+    NSLog(@"%.2f %@",[linearValueInYards value], [[linearValueInYards unit] unitAbbreviation] );
     
     CUUnitTracker *unitTracker = [[CUUnitTracker alloc] initWithUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveSI];
     NSLog(@"%@",[unitTracker valueFromValue:linearValue]);

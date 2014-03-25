@@ -9,6 +9,10 @@
 
 @implementation CUArealValue
 
+- (id)initWithArealUnitType:(CUArealUnitType) arealUnitType andValue:(double) value {
+    return [self initWithArealUnit:[CUArealUnit arealUnitWithType:arealUnitType] andValue:value];
+}
+
 - (id)initWithArealUnit:(CUArealUnit*) arealUnit andValue:(double) value {
 	if( self = [super init] ) {
 		_unit = [arealUnit retain];

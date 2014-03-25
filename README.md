@@ -9,7 +9,7 @@ CoreUnits is based off of the SI system and all base units are the currently rec
 
 ### Declaring a CUValue
 ```
-CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit miles] andValue:1];
+CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnitType:CULinearUnitTypeKilometer andValue:1];
 ```
 ### Converting from one unit to another
 
@@ -17,6 +17,13 @@ CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinear
 CULinearValue *linearValueInYards = [linearValue valueByConvertingToUnitType:CULinearUnitTypeYard];
 // Note that valueByConvertingToUnit: returns an autoreleased object
 ```
+
+### Printing out values
+```
+NSLog(@"%@",linearValueInYards); // 1093.613298 Yards
+NSLog(@"%.2f %@",[linearValueInYards value], [[linearValueInYards unit] unitAbbreviation] ); // 1093.61 yd
+```
+
 
 # Current Units List:
 CoreUnits allows conversion between any 2 units of the same mechanic or dimension.
