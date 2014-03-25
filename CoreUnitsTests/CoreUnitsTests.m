@@ -33,6 +33,8 @@
     
     CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit miles] andValue:1];
     
+    CULinearValue *linearValueInYards = [linearValue valueByConvertingToUnitType:CULinearUnitTypeYard];
+    
     CUUnitTracker *unitTracker = [[CUUnitTracker alloc] initWithUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveSI];
     NSLog(@"%@",[unitTracker valueFromValue:linearValue]);
     [unitTracker setUnitTrackerDefault:CUUnitTrackerDefaultCommonScaleAdaptiveImperial];

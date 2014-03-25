@@ -19,6 +19,10 @@
 	return self;
 }
 
+- (CULinearValue*)valueByConvertingToUnitType:(CULinearUnitType) newLinearUnitType {
+    return [self valueByConvertingToUnit:[CULinearUnit linearUnitWithType:newLinearUnitType]];
+}
+
 - (CULinearValue*)valueByConvertingToUnit:(CULinearUnit*) newLinearUnit {
 
 	double convertedValue;

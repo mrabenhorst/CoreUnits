@@ -17,6 +17,10 @@
 	return self;
 }
 
+- (CUArealValue*)valueByConvertingToUnitType:(CUArealUnitType) newArealUnitType {
+    return [self valueByConvertingToUnit:[CUArealUnit arealUnitWithType:newArealUnitType]];
+}
+
 - (CUArealValue*)valueByConvertingToUnit:(CUArealUnit*) newArealUnit {
 
 	double convertedValue;

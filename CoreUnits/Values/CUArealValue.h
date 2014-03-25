@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CUValue.h"
+#import "CUUnitTypes.h"
 
 @class CUArealUnit;
 
@@ -14,6 +15,6 @@
 }
 
 - (id)initWithArealUnit:(CUArealUnit*) arealUnit andValue:(double) value;
-- (CUArealValue*)valueByConvertingToUnit:(CUArealUnit*) newArealUnit;
+- (CUArealValue*)valueByConvertingToUnitType:(CUArealUnitType) newArealUnitType;
 
 @end
