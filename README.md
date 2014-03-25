@@ -5,10 +5,22 @@ A unit conversion library for Objective-C to keep track of and easily convert be
 
 CoreUnits is based off of the SI system and all base units are the currently recognized base units of the SI system. Imperial base units are those with agreed upon exact conversions to an SI base unit. All Imperial units are converted down to the base Imperial unit and then converted to SI to retain precision.
 
-=========
+## Sample Usage
+
+### Declaring a CUValue
+```
+CULinearValue *linearValue = [[CULinearValue alloc] initWithLinearUnit:[CULinearUnit miles] andValue:1];
+```
+### Converting from one unit to another
+
+```
+CULinearValue *linearValueInYards = [linearValue valueByConvertingToUnitType:CULinearUnitTypeYard];
+// Note that valueByConvertingToUnit: returns an autoreleased object
+```
 
 # Current Units List:
 CoreUnits allows conversion between any 2 units of the same mechanic or dimension.
+
 
 ## Linear Units:
 1. Meter - CU's base linear unit
@@ -32,5 +44,8 @@ Coming soon
 ## Temporal Units:
 Coming soon
 
+## Temperature Units
+Coming soon
 
-
+# Unit system tracking and adaptive conversions
+CoreUnits provides a class called ```CUUnitTracker``` which accepts ```CUValue```s of any unit system and returns them according to the ```CUUnitTrackerDefault``` scheme applied to the tracker.
