@@ -7,6 +7,7 @@
 #import "CUUnitTypes.h"
 #import "CUUnit.h"
 
+
 @interface CULinearUnit : CUUnit {
 	CULinearUnitType _unitType;
 	CULinearUnitType _baseUnitType;
@@ -23,10 +24,5 @@
 			  unitConversionBlock:(CUUnitConversionBlock) unitConversionBlock;
 
 + (id)linearUnitWithType:(CULinearUnitType) linearUnitType;
-
-+ (id)meters;
-+ (id)kilometers;
-+ (id)feet;
-+ (id)miles;
 
 @end
