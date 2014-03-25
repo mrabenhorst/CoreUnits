@@ -6,16 +6,20 @@
 #import <Foundation/Foundation.h>
 #import "CUUnitTypes.h"
 
+@class CUUnit;
+typedef double(^CUUnitConversionBlock)(double); // Input: Current value, Output: value converted to base units
+
 @interface CUUnit : NSObject {
 	CUUnitMechanic _unitMechanic;
-	double _baseUnitMultiplier;
+    
+    CUUnitConversionBlock _unitConversionBlock;
 
 	NSString *_unitNameSingular;
 	NSString *_unitNamePlural;
 	NSString *_unitAbbreviation;
 }
 
-@property (nonatomic, readonly) double baseUnitMultiplier;
+@property (nonatomic, copy) CUUnitConversionBlock unitConversionBlock;
 @property (nonatomic, readonly) CUUnitMechanic unitMechanic;
 
 @property (nonatomic, readonly) NSString *unitNameSingular;

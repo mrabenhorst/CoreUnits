@@ -21,7 +21,7 @@
 			      namePlural:(NSString*) unitNamePlural
 				abbreviation:(NSString*) unitAbbreviation
 				baseUnitType:(CUArealUnitType) baseUnitType
-			  baseMultiplier:(double) baseMultiplier;
+		 unitConversionBlock:(CUUnitConversionBlock) unitConversionBlock;
 
 + (id)arealUnitWithType:(CUArealUnitType) arealUnitType;
 

@@ -20,7 +20,7 @@
                   namePlural:(NSString*) unitNamePlural
 			    abbreviation:(NSString*) unitAbbreviation
 				baseUnitType:(CULinearUnitType) baseUnitType
-			  baseMultiplier:(double) baseMultiplier;
+			  unitConversionBlock:(CUUnitConversionBlock) unitConversionBlock;
 
 + (id)linearUnitWithType:(CULinearUnitType) linearUnitType;
 

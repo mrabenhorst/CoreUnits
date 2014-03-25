@@ -35,7 +35,7 @@
 	CULinearUnit * currentForwardUnit = (CULinearUnit*)_unit;
 	double currentForwardValue = _value;
 	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && [currentForwardUnit unitType] != [newLinearUnit unitType] ) {
-		currentForwardValue *= [currentForwardUnit baseUnitMultiplier];
+		currentForwardValue = [currentForwardUnit unitConversionBlock](currentForwardValue);
 		currentForwardUnit = [CULinearUnit linearUnitWithType:[currentForwardUnit baseUnitType]];
 	}
 
@@ -45,7 +45,7 @@
 		CULinearUnit *currentBackwardUnit = newLinearUnit;
 		double currentBackwardValue = 1;
 		while( [currentBackwardUnit unitType] != CULinearUnitTypeMeter ) {
-			currentBackwardValue *= [currentBackwardUnit baseUnitMultiplier];
+			currentBackwardValue = [currentBackwardUnit unitConversionBlock](currentBackwardValue);
 			currentBackwardUnit = [CULinearUnit linearUnitWithType:[currentBackwardUnit baseUnitType]];
 		}
 		// Finally, division of the forward value by the backward conversion value yields value of the new type
