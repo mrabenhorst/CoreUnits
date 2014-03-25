@@ -13,16 +13,16 @@
 			     namePlural:(NSString*) unitNamePlural
 			   abbreviation:(NSString*) unitAbbreviation
 			   baseUnitType:(CUArealUnitType) baseUnitType
-			 baseMultiplier:(double) baseMultiplier {
+	    unitConversionBlock:(CUUnitConversionBlock) unitConversionBlock {
 
 	if( self = [super init] ) {
-		_unitMechanic       = CUUnitMechanicAreal;
-		_unitType           = unitType;
-		_baseUnitType       = baseUnitType;
-		_baseUnitMultiplier = baseMultiplier;
-		_unitNameSingular   = [unitNameSingular copy];
-		_unitNamePlural     = [unitNamePlural copy];
-		_unitAbbreviation   = [unitAbbreviation copy];
+		_unitMechanic        = CUUnitMechanicAreal;
+		_unitType            = unitType;
+		_baseUnitType        = baseUnitType;
+		_unitConversionBlock = [unitConversionBlock copy];
+		_unitNameSingular    = [unitNameSingular copy];
+		_unitNamePlural      = [unitNamePlural copy];
+		_unitAbbreviation    = [unitAbbreviation copy];
 	}
 	return self;
 }
@@ -33,7 +33,7 @@
 				                            namePlural:@"Square Meters"
 						                  abbreviation:@"sq m"
 									      baseUnitType:CUArealUnitTypeSquareMeter
-										baseMultiplier:1.0] autorelease];
+								   unitConversionBlock:^(double value){return value;}] autorelease];
 }
 
 + (id)squareKilometers {
@@ -42,7 +42,7 @@
 				                            namePlural:@"Square Kilometers"
 						                  abbreviation:@"sq Km"
 									      baseUnitType:CUArealUnitTypeSquareMeter
-										baseMultiplier:1000000.0] autorelease];
+								   unitConversionBlock:^(double value){return value*1000000.0;}] autorelease];
 }
 
 + (id)hectares {
@@ -51,7 +51,7 @@
 				                            namePlural:@"Hectares"
 						                  abbreviation:@"ha"
 									      baseUnitType:CUArealUnitTypeSquareMeter
-										baseMultiplier:10000.0] autorelease];
+								   unitConversionBlock:^(double value){return value*10000.0;}] autorelease];
 }
 
 + (id)squareFeet {
@@ -60,7 +60,7 @@
 				                            namePlural:@"Square Feet"
 						                  abbreviation:@"sq ft"
 									      baseUnitType:CUArealUnitTypeSquareYard
-										baseMultiplier:(1.0/9.0)] autorelease];
+								   unitConversionBlock:^(double value){return value/9.0;}] autorelease];
 }
 
 + (id)squareYards {
@@ -69,7 +69,7 @@
 				                            namePlural:@"Square Yards"
 						                  abbreviation:@"sq yd"
 									      baseUnitType:CUArealUnitTypeSquareMeter
-										baseMultiplier:0.83612736] autorelease]; // As derived by the linear yard->meter established by the International yard and pound agreement of 1959
+								   unitConversionBlock:^(double value){return value*0.83612736;}] autorelease]; // As derived by the linear yard->meter established by the International yard and pound agreement of 1959
 }
 
 + (id)squareMiles {
@@ -78,7 +78,7 @@
 				                            namePlural:@"Square Miles"
 						                  abbreviation:@"sq mi"
 									      baseUnitType:CUArealUnitTypeSquareFoot
-										baseMultiplier:27878400.0] autorelease];
+								   unitConversionBlock:^(double value){return value*27878400.0;}] autorelease];
 }
 
 + (id)acres {
@@ -87,7 +87,7 @@
 				                            namePlural:@"Acres"
 						                  abbreviation:@"ac"
 									      baseUnitType:CUArealUnitTypeSquareYard
-										baseMultiplier:4840.0] autorelease];
+								   unitConversionBlock:^(double value){return value*4840.0;}] autorelease];
 }
 
 + (id)arealUnitWithType:(CUArealUnitType) arealUnitType {

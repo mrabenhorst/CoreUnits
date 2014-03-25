@@ -16,16 +16,16 @@
 			      namePlural:(NSString*) unitNamePlural
 				abbreviation:(NSString*) unitAbbreviation
 				baseUnitType:(CULinearUnitType) baseUnitType
-			  baseMultiplier:(double) baseMultiplier {
+				unitConversionBlock:(CUUnitConversionBlock) unitConversionBlock {
 
 	if( self = [super init] ) {
-		_unitMechanic       = CUUnitMechanicLinear;
-		_unitType           = unitType;
-		_baseUnitType       = baseUnitType;
-		_baseUnitMultiplier = baseMultiplier;
-		_unitNameSingular   = [unitNameSingular copy];
-		_unitNamePlural     = [unitNamePlural copy];
-		_unitAbbreviation   = [unitAbbreviation copy];
+		_unitMechanic        = CUUnitMechanicLinear;
+		_unitType            = unitType;
+		_baseUnitType        = baseUnitType;
+		_unitConversionBlock = [unitConversionBlock copy];
+		_unitNameSingular    = [unitNameSingular copy];
+		_unitNamePlural      = [unitNamePlural copy];
+		_unitAbbreviation    = [unitAbbreviation copy];
 	}
 	return self;
 }
@@ -36,7 +36,7 @@
 	                                          namePlural:@"Meters"
 		                                    abbreviation:@"m"
 					                        baseUnitType:CULinearUnitTypeMeter
-								          baseMultiplier:1.0] autorelease];
+								          unitConversionBlock:^(double value){return value;}] autorelease];
 }
 
 + (id)kilometers {
@@ -45,7 +45,7 @@
 				                              namePlural:@"Kilometers"
 		                                    abbreviation:@"Km"
 					                        baseUnitType:CULinearUnitTypeMeter
-								          baseMultiplier:1000.0] autorelease];
+					                        unitConversionBlock:^(double value){return value*1000;}] autorelease];
 }
 
 + (id)feet {
@@ -54,7 +54,7 @@
 				                              namePlural:@"Feet"
 		                                    abbreviation:@"ft"
 					                        baseUnitType:CULinearUnitTypeYard
-								          baseMultiplier:(1.0/3.0)] autorelease];
+					                        unitConversionBlock:^(double value){return value/3;}] autorelease];
 }
 
 + (id)yards {
@@ -63,7 +63,7 @@
 				                              namePlural:@"Yards"
 						                    abbreviation:@"yd"
 									        baseUnitType:CULinearUnitTypeMeter
-										  baseMultiplier:0.9144] autorelease]; // As established by the International yard and pound agreement of 1959
+									        unitConversionBlock:^(double value){return value*0.9144;}] autorelease]; // As established by the International yard and pound agreement of 1959
 }
 
 + (id)miles {
@@ -72,7 +72,7 @@
 				                              namePlural:@"Miles"
 						                    abbreviation:@"Mi"
 									        baseUnitType:CULinearUnitTypeFoot
-										  baseMultiplier:5280.0] autorelease];
+									        unitConversionBlock:^(double value){return value*5280.0;}] autorelease];
 }
 
 + (id)linearUnitWithType:(CULinearUnitType) linearUnitType {

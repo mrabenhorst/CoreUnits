@@ -33,7 +33,7 @@
 	CUArealUnit *currentForwardUnit = (CUArealUnit*)_unit;
 	double currentForwardValue = _value;
 	while( [currentForwardUnit unitType] != CULinearUnitTypeMeter && [currentForwardUnit unitType] != [newArealUnit unitType] ) {
-		currentForwardValue *= [currentForwardUnit baseUnitMultiplier];
+		currentForwardValue = [currentForwardUnit unitConversionBlock](currentForwardValue);
 		currentForwardUnit = [CUArealUnit arealUnitWithType:[currentForwardUnit baseUnitType]];
 	}
 
@@ -43,7 +43,7 @@
 		CUArealUnit *currentBackwardUnit = newArealUnit;
 		double currentBackwardValue = 1;
 		while( [currentBackwardUnit unitType] != CULinearUnitTypeMeter ) {
-			currentBackwardValue *= [currentBackwardUnit baseUnitMultiplier];
+			currentBackwardValue = [currentBackwardUnit unitConversionBlock](currentBackwardValue);
 			currentBackwardUnit = [CUArealUnit arealUnitWithType:[currentBackwardUnit baseUnitType]];
 		}
 		// Finally, division of the forward value by the backward conversion value yields value of the new type
